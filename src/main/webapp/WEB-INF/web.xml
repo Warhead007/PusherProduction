@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>Servlet.index</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>Servlet.Profile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JobForm</servlet-name>
+        <servlet-class>Servlet.JobForm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddJobServlet</servlet-name>
+        <servlet-class>Servlet.AddJobServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobForm</servlet-name>
+        <url-pattern>/JobForm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddJobServlet</servlet-name>
+        <url-pattern>/AddJobServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
