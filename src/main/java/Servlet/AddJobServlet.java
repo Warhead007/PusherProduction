@@ -5,19 +5,13 @@
  */
 package Servlet;
 
-import Model.JobModel;
-import Model.JobModelTEST;
-import java.io.BufferedReader;
+import Model.JobFormModel;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -36,8 +30,14 @@ public class AddJobServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/Web/jobform.jsp");
-        dispatcher.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String jobName = request.getParameter("name");
+        String description = request.getParameter("description");
+
+        JobFormModel jfm = new JobFormModel();
+        jfm.addJob(jobName, "dummyPath", 0, description);
+
+        getServletContext().getRequestDispatcher("/Web/jobform.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,41 +67,7 @@ public class AddJobServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); 
-        
-        Part picturePart = request.getPart("picture");
-    String pictureName = this.getFileName(picturePart);
-    picturePart.write(pictureName);
-    picturePart.delete();
-    
-    Part descriptionPart = request.getPart("description");
-    String description = this.getStringFromPart(descriptionPart);
-
-        String name = request.getParameter("name");
-        String picpath = "/"+pictureName;
-        int userid = 001;
-        
-        JobModelTEST jf = new JobModelTEST();
-        jf.addJob(name, picpath, userid, description);
-//    out.close(); pictureName 
-    getServletContext().getRequestDispatcher("/testPage.jsp").forward(request, response);
-    } // end of do post
-      private String getFileName(Part part) {
-    for (String cd : part.getHeader("content-disposition").split(";")) {
-      if (cd.trim().startsWith("filename")) {
-        return cd.substring(cd.indexOf('=') + 1).trim()
-                .replace("\"", "");
-      }
     }
-    return null;
-  } // end of getFileName()
-      
-        private String getStringFromPart(Part part) throws IOException {
-    BufferedReader r = new BufferedReader(new InputStreamReader(part.getInputStream()));
-    return r.readLine();
-  } // end of getStringFromPart()
 
     /**
      * Returns a short description of the servlet.

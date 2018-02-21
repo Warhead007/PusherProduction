@@ -16,6 +16,10 @@
         <servlet-name>AddJobServlet</servlet-name>
         <servlet-class>Servlet.AddJobServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JobFormServlet</servlet-name>
+        <servlet-class>Servlet.JobFormServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>AddJobServlet</servlet-name>
         <url-pattern>/AddJobServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobFormServlet</servlet-name>
+        <url-pattern>/JobFormServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

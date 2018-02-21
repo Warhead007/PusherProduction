@@ -29,9 +29,8 @@ public class JobFormServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-         getServletContext().getRequestDispatcher("/jobform.jsp").forward(request, response);
+         getServletContext().getRequestDispatcher("/Web/jobform.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
